@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="The Internet UI Tests" parallel="classes" thread-count="5">
+    <test name="UI Functionality Tests">
+        <classes>
+            <class name="ui.pages.AvailableExamplesPageTest"/>
+            <class name="ui.pages.AddRemoveElementsPageTest"/>
+            <class name="ui.pages.FormAuthenticationPageTest"/>
+            <class name="ui.pages.CheckboxesPageTest"/>
+            <class name="ui.pages.DropdownPageTest"/>
+            <class name="ui.pages.KeyPressesPageTest"/>
+            <class name="ui.pages.HoversPageTest"/>
+            <class name="ui.pages.DragAndDropTest"/>
+            <class name="ui.pages.DynamicControlsPageTest"/>
+            <class name="ui.pages.FloatingMenuPageTest"/>
+            <class name="ui.pages.ExitIntentPageTest"/>
+            <class name="ui.pages.JavascriptAlertsPageTest"/>
+            <class name="ui.pages.ContextPageTest"/>
+            <class name="ui.pages.JavascriptErrorPageTest"/>
+        </classes>
+    </test>
+</suite>
