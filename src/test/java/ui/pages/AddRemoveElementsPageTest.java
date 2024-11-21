@@ -10,7 +10,6 @@ public class AddRemoveElementsPageTest extends BaseTest {
     @BeforeMethod
     public void setup() {
         super.setup();
-
         app.addRemoveElementsPage().navigate();
     }
 

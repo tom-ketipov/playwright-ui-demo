@@ -109,13 +109,13 @@ public class App {
         launchOptions.setHeadless(isHeadless());
 
         switch (browserTypeName.toLowerCase()) {
-            case "chrome" -> {
+            case "chromium" -> {
                 browserType = playwright.chromium();
-                logger.info("Using Chromium browser");
+                logger.info("Using Chromium");
             }
             case "firefox" -> {
                 browserType = playwright.firefox();
-                logger.info("Using Firefox browser");
+                logger.info("Using Firefox");
             }
             default -> {
                 logger.error("Unsupported browser: {}", browserTypeName);

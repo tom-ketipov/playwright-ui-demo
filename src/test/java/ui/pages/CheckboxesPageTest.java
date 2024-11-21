@@ -11,7 +11,6 @@ public class CheckboxesPageTest extends BaseTest {
     @BeforeMethod
     public void setup() {
         super.setup();
-
         app.checkboxesPage().navigate();
     }
 
