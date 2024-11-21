@@ -94,14 +94,15 @@ public class App {
      * @throws RuntimeException if the specified browser type is unsupported.
      */
     public void startBrowser(String browserTypeName) {
-        logger.info("Starting browser: {}", browserTypeName);
-        playwright = Playwright.create();
-
         // Check for null or empty input
         if (browserTypeName == null || browserTypeName.isEmpty()) {
             logger.error("Browser type name cannot be null or empty");
             throw new IllegalArgumentException("Browser type name cannot be null or empty");
         }
+
+        logger.info("Starting browser: {}", browserTypeName);
+        playwright = Playwright.create();
+
 
         // Set browser options
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions();
