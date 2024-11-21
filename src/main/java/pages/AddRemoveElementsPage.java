@@ -8,15 +8,14 @@ import org.apache.logging.log4j.Logger;
 
 public class AddRemoveElementsPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(AddRemoveElementsPage.class);
-    private static final String ADD_REMOVE_ELEMENTS_PAGE_URL = "/add_remove_elements/";
+    private static final String ADD_REMOVE_ELEMENTS_PAGE_ENDPOINT = "/add_remove_elements/";
 
     public AddRemoveElementsPage(Page page) {
         super(page);
     }
 
     public void navigate() {
-        logger.info("Navigating to Add/Remove Elements page");
-        navigate(ADD_REMOVE_ELEMENTS_PAGE_URL);
+        navigate(ADD_REMOVE_ELEMENTS_PAGE_ENDPOINT);
     }
 
     // #  page locators
@@ -44,7 +43,7 @@ public class AddRemoveElementsPage extends BasePage {
         deleteBtn.nth(0).click();
     }
 
-    public void clickDeleteBtn(int index) {
+    public void clickDeleteBtnByIndex(int index) {
         logger.info("Clicking delete button at index: {}", index);
         deleteBtn.nth(index).click();
     }

@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class DynamicControlsPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(DynamicControlsPage.class);
-    private static final String DYNAMIC_CONTROLS_ENDPOINT = "/dynamic_controls";
+    private static final String DYNAMIC_CONTROLS_PAGE_ENDPOINT = "/dynamic_controls";
 
     public DynamicControlsPage(Page page) {
         super(page);
@@ -31,7 +31,7 @@ public class DynamicControlsPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(DYNAMIC_CONTROLS_ENDPOINT);
+        navigate(DYNAMIC_CONTROLS_PAGE_ENDPOINT);
     }
 
     public String getTitleText() {

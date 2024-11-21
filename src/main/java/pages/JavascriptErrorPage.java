@@ -10,7 +10,7 @@ import java.util.List;
 
 public class JavascriptErrorPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(JavascriptErrorPage.class);
-    private static final String JAVASCRIPT_ERROR_ENDPOINT = "/key_presses";
+    private static final String JAVASCRIPT_ERROR_PAGE_ENDPOINT = "/key_presses";
 
     public JavascriptErrorPage(Page page) {
         super(page);
@@ -21,7 +21,7 @@ public class JavascriptErrorPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(JAVASCRIPT_ERROR_ENDPOINT);
+        navigate(JAVASCRIPT_ERROR_PAGE_ENDPOINT);
     }
 
     public Locator getTitle() {

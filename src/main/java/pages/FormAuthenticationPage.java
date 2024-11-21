@@ -8,15 +8,14 @@ import org.apache.logging.log4j.Logger;
 public class FormAuthenticationPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(FormAuthenticationPage.class);
 
-    private final static String FORM_AUTHENTICATION_URL = "/login";
+    private final static String FORM_AUTHENTICATION_PAGE_ENDPOINT = "/login";
 
     public FormAuthenticationPage(Page page) {
         super(page);
     }
 
     public void navigate() {
-        logger.info("Navigating to Form Authentication page");
-        navigate(FORM_AUTHENTICATION_URL);
+        navigate(FORM_AUTHENTICATION_PAGE_ENDPOINT);
     }
 
     // # page locators

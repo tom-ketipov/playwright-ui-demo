@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ContextMenuPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(ContextMenuPage.class);
-    private static final String CONTEXT_MENU_ENDPOINT = "/context_menu";
+    private static final String CONTEXT_MENU_PAGE_ENDPOINT = "/context_menu";
 
     public ContextMenuPage(Page page) {
         super(page);
@@ -21,7 +21,7 @@ public class ContextMenuPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(CONTEXT_MENU_ENDPOINT);
+        navigate(CONTEXT_MENU_PAGE_ENDPOINT);
     }
 
     public String getTitleText() {

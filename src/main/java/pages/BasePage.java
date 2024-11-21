@@ -21,7 +21,9 @@ public class BasePage {
     }
 
     protected void navigate(String pageUrl) {
-        page.navigate(BASE_URL + pageUrl);
+        String URL = BASE_URL + pageUrl;
+        logger.info("Navigating to {}", URL);
+        page.navigate(URL);
     }
 
     public String url() {

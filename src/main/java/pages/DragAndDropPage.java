@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class DragAndDropPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(DragAndDropPage.class);
-    private static final String DRAG_AND_DROP_ENDPOINT = "/drag_and_drop";
+    private static final String DRAG_AND_DROP_PAGE_ENDPOINT = "/drag_and_drop";
 
     public DragAndDropPage(Page page) {
         super(page);
@@ -21,7 +21,7 @@ public class DragAndDropPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(DRAG_AND_DROP_ENDPOINT);
+        navigate(DRAG_AND_DROP_PAGE_ENDPOINT);
     }
 
     public String getTitleText() {

@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class KeyPressesPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(KeyPressesPage.class);
-    private static final String KEY_PRESSES_ENDPOINT = "/key_presses";
+    private static final String KEY_PRESSES_PAGE_ENDPOINT = "/key_presses";
 
     public KeyPressesPage(Page page) {
         super(page);
@@ -19,7 +19,7 @@ public class KeyPressesPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(KEY_PRESSES_ENDPOINT);
+        navigate(KEY_PRESSES_PAGE_ENDPOINT);
     }
 
     public Locator getTitle() {

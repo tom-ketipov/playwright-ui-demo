@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 public class HoversPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(HoversPage.class);
-    private static final String HOVERS_ENDPOINT = "/hovers";
+    private static final String HOVERS_PAGE_ENDPOINT = "/hovers";
 
     public HoversPage(Page page) {
         super(page);
@@ -21,7 +21,7 @@ public class HoversPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(HOVERS_ENDPOINT);
+        navigate(HOVERS_PAGE_ENDPOINT);
     }
 
     public Locator getTitle() {

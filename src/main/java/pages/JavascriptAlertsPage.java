@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class JavascriptAlertsPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(JavascriptAlertsPage.class);
-    private static final String JAVASCRIPT_ALERTS_ENDPOINT = "/javascript_alerts";
+    private static final String JAVASCRIPT_ALERTS_PAGE_ENDPOINT = "/javascript_alerts";
 
     public JavascriptAlertsPage(Page page) {
         super(page);
@@ -22,7 +22,7 @@ public class JavascriptAlertsPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(JAVASCRIPT_ALERTS_ENDPOINT);
+        navigate(JAVASCRIPT_ALERTS_PAGE_ENDPOINT);
     }
 
     public String getTitleText() {

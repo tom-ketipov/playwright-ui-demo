@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class ExitIntentPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(ExitIntentPage.class);
-    private static final String EXIT_INTENT_ENDPOINT = "/exit_intent";
+    private static final String EXIT_INTENT_PAGE_ENDPOINT = "/exit_intent";
 
     public ExitIntentPage(Page page) {
         super(page);
@@ -19,7 +19,7 @@ public class ExitIntentPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(EXIT_INTENT_ENDPOINT);
+        navigate(EXIT_INTENT_PAGE_ENDPOINT);
     }
 
     public String getTitleText() {

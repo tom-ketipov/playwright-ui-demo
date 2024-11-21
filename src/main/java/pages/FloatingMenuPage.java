@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class FloatingMenuPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(FloatingMenuPage.class);
-    private static final String FLOATING_MENU_ENDPOINT = "/floating_menu";
+    private static final String FLOATING_MENU_PAGE_ENDPOINT = "/floating_menu";
 
     public FloatingMenuPage(Page page) {
         super(page);
@@ -20,7 +20,7 @@ public class FloatingMenuPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(FLOATING_MENU_ENDPOINT);
+        navigate(FLOATING_MENU_PAGE_ENDPOINT);
     }
 
     public String getTitleText() {

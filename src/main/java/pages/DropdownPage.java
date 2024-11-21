@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class DropdownPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(DropdownPage.class);
-    private static final String DROPDOWN_ENDPOINT = "/dropdown";
+    private static final String DROPDOWN__PAGE_ENDPOINT = "/dropdown";
 
     public DropdownPage(Page page) {
         super(page);
@@ -19,7 +19,7 @@ public class DropdownPage extends BasePage {
 
     // # helpers
     public void navigate() {
-        navigate(DROPDOWN_ENDPOINT);
+        navigate(DROPDOWN__PAGE_ENDPOINT);
     }
 
     public String getTitleText() {
