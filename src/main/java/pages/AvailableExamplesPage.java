@@ -12,18 +12,17 @@ public class AvailableExamplesPage extends BasePage {
         super(page);
     }
 
-
     // # page locators
     Locator addRemoveElementsLink = page.locator("//a[text()='Add/Remove Elements']");
     Locator formAuthenticationLink = page.locator("//a[text()='Form Authentication']");
     Locator checkboxesLink = page.locator("//a[text()='Checkboxes']");
 
-
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate("");
     }
 
+    // # Page Links
     public void clickAddRemoveElementsLink() {
         logger.info("Clicking Add/Remove Element link");
         addRemoveElementsLink.click();
