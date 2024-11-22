@@ -32,14 +32,15 @@ public class BasePage {
 
     // >>> waits
 
-    public void waitForElementToBeHidden(Locator locator) {
-        locator.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.HIDDEN));
+    /**
+     * Waits for an element to be in the specified state (VISIBLE/HIDDEN).
+     *
+     * @param locator The locator for the element.
+     * @param state   The desired state of the element.
+     */
+    public void waitForElementState(Locator locator, WaitForSelectorState state) {
+        locator.waitFor(new Locator.WaitForOptions().setState(state));
     }
-
-    public void waitForElementToBeVisible(Locator locator) {
-        locator.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
-    }
-
 
     // >>> scroll
 
@@ -62,6 +63,10 @@ public class BasePage {
 
     // >>> checkbox helpers
 
+    private Locator getCheckboxLocator(String labelText) {
+        return page.locator("//form[@id='checkboxes']/input[following-sibling::text()[contains(., '" + labelText + "')]]");
+    }
+
     /**
      * Checks if the checkbox with the specified label text is checked.
      *
@@ -70,7 +75,7 @@ public class BasePage {
      */
     public boolean isChecked(String labelText) {
         try {
-            return page.locator("//form[@id='checkboxes']/input[following-sibling::text()[contains(., '" + labelText + "')]]").isChecked();
+            return getCheckboxLocator(labelText).isChecked();
         } catch (Exception e) {
             logger.error("Error while checking the state of the checkbox with label '{}': {}", labelText, e.getMessage());
         }
@@ -84,7 +89,7 @@ public class BasePage {
      */
     public void check(String labelText) {
         try {
-            page.locator("//form[@id='checkboxes']/input[following-sibling::text()[contains(., '" + labelText + "')]]").check();
+            getCheckboxLocator(labelText).check();
             logger.info("Successfully checked the checkbox with label: {}", labelText);
         } catch (Exception e) {
             logger.error("Failed to check the checkbox with label: {}. Error: {}", labelText, e.getMessage());
@@ -98,7 +103,7 @@ public class BasePage {
      */
     public void uncheck(String labelText) {
         try {
-            page.locator("//form[@id='checkboxes']/input[following-sibling::text()[contains(., '" + labelText + "')]]").uncheck();
+            getCheckboxLocator(labelText).uncheck();
             logger.info("Successfully unchecked the checkbox with label: {}", labelText);
         } catch (Exception e) {
             logger.error("Failed to uncheck the checkbox with label: {}. Error: {}", labelText, e.getMessage());
@@ -160,12 +165,11 @@ public class BasePage {
     public void dragAndDrop(Locator source, Locator target) {
         logger.info("Dragging element from {} to {}", source, target);
         source.dragTo(target);
-        logger.info("Successfully dropped element to " + target);
+        logger.info("Element successfully dropped to {}", target);
     }
 
     /**
-     * Manually drags an element from the specified source locator to the target locator
-     * by simulating mouse hover and mouse down/up actions.
+     * Manually drags an element from the source locator to the target locator using mouse actions.
      *
      * @param source The locator of the element to be dragged.
      * @param target The locator where the element should be dropped.
@@ -174,10 +178,9 @@ public class BasePage {
         logger.info("Manually dragging element from {} to {}", source, target);
         source.hover();
         page.mouse().down();
-
         target.hover();
         page.mouse().up();
-        logger.info("Successfully dropped element to " + target);
+        logger.info("Element manually dropped to {}", target);
     }
 
 
@@ -207,57 +210,48 @@ public class BasePage {
     // >>> dialog
 
     /**
-     * Accepts a prompt dialog and provides the specified text as input.
+     * Accepts a prompt dialog with the provided text.
      *
-     * @param text The text to enter into the prompt dialog before accepting it.
+     * @param text The text to enter into the prompt dialog.
      */
     public void acceptPromptDialog(String text) {
-        logger.info("Waiting for a prompt dialog to appear...");
-
+        logger.info("Waiting for prompt dialog...");
         page.onDialog(dialog -> {
-            if (dialog.type().equals("prompt")) {
-                logger.info("Prompt dialog detected. Accepting with text: {}", text);
+            if ("prompt".equals(dialog.type())) {
                 dialog.accept(text);
+                logger.info("Accepted prompt dialog with text: {}", text);
             } else {
-                logger.warn("Expected prompt dialog, but found: {}", dialog.type());
+                logger.warn("Expected prompt dialog, found: {}", dialog.type());
             }
         });
     }
 
     /**
-     * Accepts a confirm or alert dialog by clicking the "OK" button.
-     * <p>
-     * This method listens for a confirm or alert dialog and simulates clicking the "OK"
-     * button to accept it. It does nothing if the dialog is not of type "confirm" or "alert".
+     * Accepts a confirm or alert dialog by clicking "OK".
      */
     public void acceptDialog() {
-        logger.info("Waiting for a confirm or alert dialog to appear...");
-
+        logger.info("Waiting for confirm/alert dialog...");
         page.onDialog(dialog -> {
-            if (dialog.type().equals("confirm") || dialog.type().equals("alert")) {
-                logger.info("Confirm/Alert dialog detected. Accepting the dialog (clicking OK).");
+            if ("confirm".equals(dialog.type()) || "alert".equals(dialog.type())) {
                 dialog.accept();
+                logger.info("Accepted confirm/alert dialog.");
             } else {
-                logger.warn("Expected confirm or alert dialog, but found: {}", dialog.type());
+                logger.warn("Expected confirm/alert dialog, found: {}", dialog.type());
             }
         });
     }
 
     /**
-     * Dismisses a confirm or prompt dialog by clicking the "Cancel" button.
-     * <p>
-     * This method listens for a confirm or prompt dialog and simulates clicking the "Cancel"
-     * button to dismiss it. It does nothing if the dialog is not of type "confirm" or "prompt".
+     * Dismisses a confirm or prompt dialog by clicking "Cancel".
      */
     public void dismissDialog() {
-        logger.info("Waiting for a confirm or prompt dialog to appear...");
-
+        logger.info("Waiting for confirm/prompt dialog...");
         page.onDialog(dialog -> {
-            if (dialog.type().equals("confirm") || dialog.type().equals("prompt")) {
-                logger.info("Confirm/Prompt dialog detected. Dismissing the dialog (clicking Cancel).");
+            if ("confirm".equals(dialog.type()) || "prompt".equals(dialog.type())) {
                 dialog.dismiss();
+                logger.info("Dismissed confirm/prompt dialog.");
             } else {
-                logger.warn("Expected confirm or prompt dialog, but found: {}", dialog.type());
+                logger.warn("Expected confirm/prompt dialog, found: {}", dialog.type());
             }
         });
     }
@@ -265,12 +259,12 @@ public class BasePage {
     // >>> mouse
 
     /**
-     * Performs a right-click (context click) on the specified locator element.
+     * Performs a right-click (context click) on the specified element.
      *
      * @param locator The Locator representing the element to perform the right-click on.
      */
     public void rightClick(Locator locator) {
-        logger.info("Performing right-click on element: {}", locator.toString());
+        logger.info("Performing right-click on element: {}", locator);
         locator.click(new Locator.ClickOptions().setButton(MouseButton.RIGHT));
     }
 }

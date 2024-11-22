@@ -1,5 +1,6 @@
 package ui.pages;
 
+import com.microsoft.playwright.options.WaitForSelectorState;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -45,7 +46,7 @@ public class DynamicControlsPageTest extends BaseTest {
     @Test(description = "Verifies that the Remove btn removes the checkbox.")
     public void can_remove_checkbox_by_click_on_the_remove_btn() {
         app.dynamicControlsPage().clickCheckboxExampleBtn();
-        app.dynamicControlsPage().waitForElementToBeHidden(app.dynamicControlsPage().getCheckboxExampleLoader());
+        app.dynamicControlsPage().waitForElementState(app.dynamicControlsPage().getCheckboxExampleLoader(), WaitForSelectorState.HIDDEN);
 
         Assert.assertTrue(app.dynamicControlsPage().getCheckboxExampleInput().isHidden(),
                 "Expected checkbox input to be hidden, but it is still visible.");
@@ -69,7 +70,7 @@ public class DynamicControlsPageTest extends BaseTest {
     @Test(description = "Verifies that the checkbox example btn text is correct when the checkbox is not visible.")
     public void correct_btn_text_in_the_checkbox_example_section_when_the_checkbox_is_not_visible() {
         app.dynamicControlsPage().clickCheckboxExampleBtn();
-        app.dynamicControlsPage().waitForElementToBeHidden(app.dynamicControlsPage().getCheckboxExampleLoader());
+        app.dynamicControlsPage().waitForElementState(app.dynamicControlsPage().getCheckboxExampleLoader(), WaitForSelectorState.HIDDEN);
 
         Assert.assertEquals(app.dynamicControlsPage().getCheckboxExampleMessageText(), "It's gone!",
                 "Expected message to be 'It's gone!', but got: " + app.dynamicControlsPage().getCheckboxExampleMessageText());
@@ -85,12 +86,12 @@ public class DynamicControlsPageTest extends BaseTest {
     public void can_add_checkbox_by_click_on_the_add_btn() {
         // hide the element
         app.dynamicControlsPage().clickCheckboxExampleBtn();
-        app.dynamicControlsPage().waitForElementToBeHidden(app.dynamicControlsPage().getCheckboxExampleLoader());
+        app.dynamicControlsPage().waitForElementState(app.dynamicControlsPage().getCheckboxExampleLoader(), WaitForSelectorState.HIDDEN);
         Assert.assertEquals(app.dynamicControlsPage().getCheckboxExampleMessageText(), "It's gone!");
 
         // Add the element
         app.dynamicControlsPage().clickCheckboxExampleBtn();
-        app.dynamicControlsPage().waitForElementToBeHidden(app.dynamicControlsPage().getCheckboxExampleLoader());
+        app.dynamicControlsPage().waitForElementState(app.dynamicControlsPage().getCheckboxExampleLoader(), WaitForSelectorState.HIDDEN);
         Assert.assertEquals(app.dynamicControlsPage().getCheckboxExampleMessageText(), "It's back!");
         Assert.assertFalse(app.dynamicControlsPage().getCheckboxExampleInput().isHidden());
     }
@@ -99,7 +100,7 @@ public class DynamicControlsPageTest extends BaseTest {
     public void can_enable_input_field_by_click_on_the_enable_btn() {
         app.dynamicControlsPage().clickInputExampleBtn();
 
-        app.dynamicControlsPage().waitForElementToBeHidden(app.dynamicControlsPage().getInputExampleLoader());
+        app.dynamicControlsPage().waitForElementState(app.dynamicControlsPage().getCheckboxExampleLoader(), WaitForSelectorState.HIDDEN);
         Assert.assertEquals(app.dynamicControlsPage().getInputExampleMessageText(), "It's enabled!");
         Assert.assertTrue(app.dynamicControlsPage().getInputExampleField().isEnabled());
     }
@@ -113,7 +114,7 @@ public class DynamicControlsPageTest extends BaseTest {
     public void correct_btn_text_in_the_input_example_section_when_the_checkbox_is_not_visible() {
         // Enable the element
         app.dynamicControlsPage().clickInputExampleBtn();
-        app.dynamicControlsPage().waitForElementToBeHidden(app.dynamicControlsPage().getInputExampleLoader());
+        app.dynamicControlsPage().waitForElementState(app.dynamicControlsPage().getCheckboxExampleLoader(), WaitForSelectorState.HIDDEN);
         Assert.assertEquals(app.dynamicControlsPage().getInputExampleMessageText(), "It's enabled!");
 
         Assert.assertEquals(app.dynamicControlsPage().getInputExampleBtnText(), "Disable");
@@ -123,12 +124,12 @@ public class DynamicControlsPageTest extends BaseTest {
     public void can_disable_the_text_field_by_click_on_the_disable_btn() {
         // Enable the element
         app.dynamicControlsPage().clickInputExampleBtn();
-        app.dynamicControlsPage().waitForElementToBeHidden(app.dynamicControlsPage().getInputExampleLoader());
+        app.dynamicControlsPage().waitForElementState(app.dynamicControlsPage().getCheckboxExampleLoader(), WaitForSelectorState.HIDDEN);
         Assert.assertEquals(app.dynamicControlsPage().getInputExampleMessageText(), "It's enabled!");
 
         // Disable the element
         app.dynamicControlsPage().clickInputExampleBtn();
-        app.dynamicControlsPage().waitForElementToBeHidden(app.dynamicControlsPage().getInputExampleLoader());
+        app.dynamicControlsPage().waitForElementState(app.dynamicControlsPage().getCheckboxExampleLoader(), WaitForSelectorState.HIDDEN);
         Assert.assertEquals(app.dynamicControlsPage().getInputExampleMessageText(), "It's disabled!");
         Assert.assertTrue(app.dynamicControlsPage().getInputExampleField().isDisabled());
     }

@@ -31,7 +31,6 @@ public class AddRemoveElementsPageTest extends BaseTest {
 
     @Test(description = "Verifies that the user can add multiple elements.")
     public void can_add_multiple_elements_via_click_on_the_add_element_btn() {
-        // add elements
         int buttonsCount = faker.number().numberBetween(2, 10);
         for (int i = 0; i < buttonsCount; i++) {
             app.addRemoveElementsPage().clickAddBtn();
