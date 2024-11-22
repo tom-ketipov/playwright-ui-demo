@@ -14,23 +14,28 @@ public class DropdownPageTest extends BaseTest {
         app.dropdownPage().navigate();
     }
 
-    @Test(description = "Verifies that the '/dropdown' page title text is correct.")
-    public void correct_title_for_the_dropdown_page() {
-        Assert.assertEquals(app.dropdownPage().getTitleText(), "Dropdown List");
+    @Test(description = "Verifies that the '/dropdown' page title is correct.")
+    public void verifyCorrectTitleForDropdownPage() {
+        String expectedTitle = "Dropdown List";
+        String actualTitle = app.dropdownPage().getTitleText();
+        Assert.assertEquals(actualTitle, expectedTitle,
+                String.format("Expected page title '%s', but got '%s'", expectedTitle, actualTitle));
     }
 
     @Test(description = "Verifies that the default dropdown option is correct.")
     public void correct_default_dropdown_option() {
-        String dropdownOptionLabel = "Please select an option";
-
-        Assert.assertEquals(app.dropdownPage().getSelectedDropdownOption(app.dropdownPage().getDropdown()), dropdownOptionLabel);
+        String defaultDropdownOption = "Please select an option";
+        String selectedOption = app.dropdownPage().getSelectedDropdownOption(app.dropdownPage().getDropdown());
+        Assert.assertEquals(selectedOption, defaultDropdownOption,
+                String.format("Expected default dropdown option '%s', but got '%s'", defaultDropdownOption, selectedOption));
     }
 
     @Test(description = "Verifies that the user can select a dropdown option.")
     public void can_select_dropdown_option() {
-        String dropdownOptionLabel = "Option 1";
-
-        app.dropdownPage().selectDropdownOption(app.dropdownPage().getDropdown(), dropdownOptionLabel);
-        Assert.assertEquals(app.dropdownPage().getSelectedDropdownOption(app.dropdownPage().getDropdown()), dropdownOptionLabel);
+        String optionLabel = "Option 1";
+        app.dropdownPage().selectDropdownOption(app.dropdownPage().getDropdown(), optionLabel);
+        String selectedOption = app.dropdownPage().getSelectedDropdownOption(app.dropdownPage().getDropdown());
+        Assert.assertEquals(selectedOption, optionLabel,
+                String.format("Expected selected dropdown option '%s', but got '%s'", optionLabel, selectedOption));
     }
 }
