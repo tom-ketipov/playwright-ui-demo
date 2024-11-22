@@ -19,16 +19,18 @@ public class DragAndDropPage extends BasePage {
     Locator columnB = page.locator("#column-b");
 
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(DRAG_AND_DROP_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public String getTitleText() {
         logger.info("Getting title text");
         return title.innerText();
     }
 
+    // # Drag n drop containers
     public Locator getColumnA() {
         return columnA;
     }

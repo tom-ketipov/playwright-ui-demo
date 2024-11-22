@@ -34,7 +34,7 @@ public class ContextMenuPage extends BasePage {
     public String getJSAlertMessage() {
         final String[] alertMessage = new String[1];
 
-        handleAlert(message -> alertMessage[0] = message);
+        waitForAlert(message -> alertMessage[0] = message);
         rightClick(hotSpot);
         return alertMessage[0];
     }
@@ -43,7 +43,7 @@ public class ContextMenuPage extends BasePage {
     public boolean isJSAlertTriggered() {
         final boolean[] isPrompted = new boolean[1];
 
-        handleAlert(message -> isPrompted[0] = true);
+        waitForAlert(message -> isPrompted[0] = true);
         rightClick(hotSpot);
         return isPrompted[0];
     }

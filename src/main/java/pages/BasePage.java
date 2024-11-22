@@ -270,7 +270,7 @@ public class BasePage {
     }
 
     // # Common Helper for Handling JS Alerts
-    protected void handleAlert(Consumer<String> alertHandler) {
+    protected void waitForAlert(Consumer<String> alertHandler) {
         page.onDialog(dialog -> {
             String alertMessage = dialog.message();
             logger.info("Alert triggered with message: {}", alertMessage);

@@ -25,33 +25,23 @@ public class DragAndDropTest extends BaseTest {
 
     @Test(description = "Verify that the user can perform drag-n-drop actions with the dragTo() method.")
     public void can_drag_and_drop_element_with_drag_to_method() {
-        Locator firstColumnElement = app.dragAndDropPage().getColumnA();
-        Locator secondColumnElement = app.dragAndDropPage().getColumnB();
+        Locator columnA = app.dragAndDropPage().getColumnA();
+        Locator columnB = app.dragAndDropPage().getColumnB();
 
-        app.dragAndDropPage().dragAndDrop(firstColumnElement, secondColumnElement);
+        app.dragAndDropPage().dragAndDrop(columnA, columnB); // Method name optimized
 
-        String columnAText = "A";
-        String columnBText = "B";
-
-        Assert.assertEquals(firstColumnElement.innerText(), columnBText,
-                String.format("Expected first column to have text '%s', but got '%s'", columnBText, firstColumnElement.innerText()));
-        Assert.assertEquals(secondColumnElement.innerText(), columnAText,
-                String.format("Expected second column to have text '%s', but got '%s'", columnAText, secondColumnElement.innerText()));
+        Assert.assertEquals(columnA.innerText(), "B", "Expected text in Column A to be 'B'");
+        Assert.assertEquals(columnB.innerText(), "A", "Expected text in Column B to be 'A'");
     }
 
     @Test(description = "Verify that the user can perform drag-n-drop actions manually.")
     public void can_drag_and_drop_element_manually() {
-        Locator firstColumnElement = app.dragAndDropPage().getColumnA();
-        Locator secondColumnElement = app.dragAndDropPage().getColumnB();
+        Locator columnA = app.dragAndDropPage().getColumnA();
+        Locator columnB = app.dragAndDropPage().getColumnB();
 
-        app.dragAndDropPage().dragAndDropManually(firstColumnElement, secondColumnElement);
+        app.dragAndDropPage().dragAndDropManually(columnA, columnB); // Method name optimized
 
-        String columnAText = "A";
-        String columnBText = "B";
-
-        Assert.assertEquals(firstColumnElement.innerText(), columnBText,
-                String.format("Expected first column to have text '%s', but got '%s'", columnBText, firstColumnElement.innerText()));
-        Assert.assertEquals(secondColumnElement.innerText(), columnAText,
-                String.format("Expected second column to have text '%s', but got '%s'", columnAText, secondColumnElement.innerText()));
+        Assert.assertEquals(columnA.innerText(), "B", "Expected text in Column A to be 'B'");
+        Assert.assertEquals(columnB.innerText(), "A", "Expected text in Column B to be 'A'");
     }
 }
