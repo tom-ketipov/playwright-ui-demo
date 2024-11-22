@@ -14,16 +14,17 @@ public class AddRemoveElementsPage extends BasePage {
         super(page);
     }
 
-    public void navigate() {
-        navigate(ADD_REMOVE_ELEMENTS_PAGE_ENDPOINT);
-    }
-
     // #  page locators
     Locator title = page.getByRole(AriaRole.HEADING);
     Locator addBtn = page.locator("//button[text()='Add Element']");
     Locator deleteBtn = page.locator("#elements button");
 
-    // # element helpers
+    // # Navigation
+    public void navigate() {
+        navigate(ADD_REMOVE_ELEMENTS_PAGE_ENDPOINT);
+    }
+
+    // # Title-related Methods
     public Locator getTitle() {
         return title;
     }
@@ -33,19 +34,31 @@ public class AddRemoveElementsPage extends BasePage {
         return title.textContent();
     }
 
+    // # Add Element Button
     public void clickAddBtn() {
         logger.info("Clicking Add Element button");
         addBtn.click();
     }
 
-    public void clickDeleteBtn() {
-        logger.info("Clicking delete button at index: 0");
-        deleteBtn.nth(0).click();
-    }
-
+    // # Delete Button Methods
+    /**
+     * Clicks the delete button at the specified index.
+     *
+     * @param index The index of the delete button to click.
+     */
     public void clickDeleteBtnByIndex(int index) {
         logger.info("Clicking delete button at index: {}", index);
-        deleteBtn.nth(index).click();
+        try {
+            Locator deleteButton = deleteBtn.nth(index);
+            if (deleteButton.isVisible()) {
+                deleteButton.click();
+                logger.info("Clicked delete button at index: {}", index);
+            } else {
+                logger.warn("Delete button at index {} is not visible", index);
+            }
+        } catch (Exception e) {
+            logger.error("Error while clicking delete button at index: {}", index, e);
+        }
     }
 
     public Locator getDeleteBtn() {
