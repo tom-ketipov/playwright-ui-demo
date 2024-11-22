@@ -19,39 +19,32 @@ public class ContextMenuPage extends BasePage {
     Locator title = page.locator("h3");
     Locator hotSpot = page.locator("#hot-spot");
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(CONTEXT_MENU_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public String getTitleText() {
         logger.info("Getting title text");
         return title.innerText();
     }
 
-    public String promptJSAlertAndCaptureItsMessage() {
+    // # Action to prompt a JS alert and capture its message
+    public String getJSAlertMessage() {
         final String[] alertMessage = new String[1];
 
-        page.onDialog(dialog -> {
-            alertMessage[0] = dialog.message();
-            logger.info("Alert triggered with message: {}", alertMessage[0]);
-            dialog.accept();
-        });
+        handleAlert(message -> alertMessage[0] = message);
         rightClick(hotSpot);
-
         return alertMessage[0];
     }
 
-    public boolean isJSAlertPrompted() {
-        AtomicBoolean isPrompted = new AtomicBoolean();
+    // # Action to check if a JS alert is prompted
+    public boolean isJSAlertTriggered() {
+        final boolean[] isPrompted = new boolean[1];
 
-        page.onDialog(dialog -> {
-            logger.info("Alert triggered");
-            isPrompted.set(true);
-            dialog.accept();
-        });
+        handleAlert(message -> isPrompted[0] = true);
         rightClick(hotSpot);
-
-        return isPrompted.get();
+        return isPrompted[0];
     }
 }

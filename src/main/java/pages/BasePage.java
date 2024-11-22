@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 public class BasePage {
     private static final Logger logger = LogManager.getLogger(BasePage.class);
@@ -266,5 +267,15 @@ public class BasePage {
     public void rightClick(Locator locator) {
         logger.info("Performing right-click on element: {}", locator);
         locator.click(new Locator.ClickOptions().setButton(MouseButton.RIGHT));
+    }
+
+    // # Common Helper for Handling JS Alerts
+    protected void handleAlert(Consumer<String> alertHandler) {
+        page.onDialog(dialog -> {
+            String alertMessage = dialog.message();
+            logger.info("Alert triggered with message: {}", alertMessage);
+            alertHandler.accept(alertMessage);
+            dialog.accept();
+        });
     }
 }
