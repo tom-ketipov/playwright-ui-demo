@@ -14,9 +14,11 @@ public class CheckboxesPageTest extends BaseTest {
         app.checkboxesPage().navigate();
     }
 
-    @Test(description = "Verifies that the '/checkboxes' page title text is correct.")
+    @Test(description = "Verifies that the '/checkboxes' page title has the correct text.")
     public void correct_title_for_the_checkboxes_page() {
-        Assert.assertEquals(app.checkboxesPage().getTitleText(), "Checkboxes");
+        String expectedTitle = "Checkboxes";
+        String actualTitle = app.checkboxesPage().getTitleText();
+        Assert.assertEquals(actualTitle, expectedTitle, "The title text is incorrect on the Checkboxes page.");
     }
 
     @Test(description = "Verifies that the checkboxes can be checked.")
@@ -24,7 +26,7 @@ public class CheckboxesPageTest extends BaseTest {
         String checkboxLabel = " checkbox 1";
 
         app.checkboxesPage().check(checkboxLabel);
-        Assert.assertTrue(app.checkboxesPage().isChecked(checkboxLabel));
+        Assert.assertTrue(app.checkboxesPage().isChecked(checkboxLabel), checkboxLabel + " should be checked.");
     }
 
     @Test(description = "Verifies that the checkboxes can be un-checked.")
@@ -33,6 +35,6 @@ public class CheckboxesPageTest extends BaseTest {
 
         app.checkboxesPage().check(checkboxLabel);
         app.checkboxesPage().uncheck(checkboxLabel);
-        Assert.assertFalse(app.checkboxesPage().isChecked(checkboxLabel));
+        Assert.assertFalse(app.checkboxesPage().isChecked(checkboxLabel), checkboxLabel + " should be unchecked.");
     }
 }

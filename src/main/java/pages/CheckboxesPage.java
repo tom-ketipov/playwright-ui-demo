@@ -17,11 +17,12 @@ public class CheckboxesPage extends BasePage {
     Locator title = page.locator("h3");
 
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(CHECKBOXES_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public Locator getTitle() {
         return title;
     }
