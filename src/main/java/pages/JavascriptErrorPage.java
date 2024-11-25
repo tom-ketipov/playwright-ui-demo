@@ -10,7 +10,7 @@ import java.util.List;
 
 public class JavascriptErrorPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(JavascriptErrorPage.class);
-    private static final String JAVASCRIPT_ERROR_PAGE_ENDPOINT = "/key_presses";
+    private static final String JAVASCRIPT_ERROR_PAGE_ENDPOINT = "/javascript_error";
 
     public JavascriptErrorPage(Page page) {
         super(page);
