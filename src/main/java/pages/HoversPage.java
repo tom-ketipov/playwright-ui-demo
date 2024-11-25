@@ -19,11 +19,12 @@ public class HoversPage extends BasePage {
     Locator figures = page.locator(".figure");
 
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(HOVERS_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public Locator getTitle() {
         return title;
     }
@@ -32,6 +33,8 @@ public class HoversPage extends BasePage {
         logger.info("Getting title text");
         return title.innerText();
     }
+
+    // # (On-hover) Figure Methods
 
     /**
      * Retrieves the Locator of a figure element based on the specified header text.

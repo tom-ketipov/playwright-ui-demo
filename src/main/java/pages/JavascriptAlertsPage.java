@@ -20,16 +20,18 @@ public class JavascriptAlertsPage extends BasePage {
     Locator jsPromptButton = page.locator("//button[text()='Click for JS Prompt']");
     Locator result = page.locator("#result");
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(JAVASCRIPT_ALERTS_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public String getTitleText() {
         logger.info("Getting title text");
         return title.innerText();
     }
 
+    // # JS Alerts Methods
     public void clickJsAlertButton() {
         jsAlertButton.click();
     }

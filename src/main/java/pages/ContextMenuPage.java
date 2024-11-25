@@ -5,8 +5,6 @@ import com.microsoft.playwright.Page;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class ContextMenuPage extends BasePage {
     private static final Logger logger = LogManager.getLogger(ContextMenuPage.class);
     private static final String CONTEXT_MENU_PAGE_ENDPOINT = "/context_menu";

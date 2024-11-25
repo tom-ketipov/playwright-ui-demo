@@ -43,5 +43,4 @@ public class JavascriptErrorPage extends BasePage {
         navigate();
         return errorMessages;
     }
-
 }

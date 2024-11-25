@@ -18,7 +18,6 @@ public class DragAndDropPage extends BasePage {
     Locator columnA = page.locator("#column-a");
     Locator columnB = page.locator("#column-b");
 
-
     // # Navigation
     public void navigate() {
         navigate(DRAG_AND_DROP_PAGE_ENDPOINT);

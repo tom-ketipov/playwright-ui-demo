@@ -14,10 +14,6 @@ public class FormAuthenticationPage extends BasePage {
         super(page);
     }
 
-    public void navigate() {
-        navigate(FORM_AUTHENTICATION_PAGE_ENDPOINT);
-    }
-
     // # page locators
     Locator title = page.locator("h2");
 
@@ -28,8 +24,22 @@ public class FormAuthenticationPage extends BasePage {
 
     Locator popUpMessage = page.locator("#flash");
 
+    // # Navigation
+    public void navigate() {
+        navigate(FORM_AUTHENTICATION_PAGE_ENDPOINT);
+    }
 
-    // # element helpers
+    // # Title-related Methods
+    public Locator getTitle() {
+        return title;
+    }
+
+    public String getTitleText() {
+        logger.info("Getting title text");
+        return title.innerText();
+    }
+
+    // # Form Methods
     public void fillUsername(String username) {
         logger.info("Filling in username: {}", username);
         usernameField.fill(username);
@@ -48,15 +58,6 @@ public class FormAuthenticationPage extends BasePage {
     public void clickLogoutBtn() {
         logger.info("Clicking Logout button");
         logoutBtn.click();
-    }
-
-    public Locator getTitle() {
-        return title;
-    }
-
-    public String getTitleText() {
-        logger.info("Getting title text");
-        return title.innerText();
     }
 
     public Locator getPopUpMessage() {

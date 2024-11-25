@@ -29,11 +29,12 @@ public class DynamicControlsPage extends BasePage {
     Locator inputExampleMessage = page.locator("#input-example #message");
 
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(DYNAMIC_CONTROLS_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public String getTitleText() {
         logger.info("Getting title text");
         return title.innerText();
@@ -49,6 +50,7 @@ public class DynamicControlsPage extends BasePage {
         return inputExampleTitle.innerText();
     }
 
+    // # Checkbox Methods
     public void clickCheckboxExampleBtn() {
         logger.info("Clicking Checkbox Example Button");
         checkboxExampleBtn.click();
@@ -72,6 +74,7 @@ public class DynamicControlsPage extends BasePage {
         return checkboxExampleMessage.innerText();
     }
 
+    // # Input Methods
     public void clickInputExampleBtn() {
         logger.info("Clicking Input Example Button");
         inputExampleBtn.click();

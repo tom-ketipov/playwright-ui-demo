@@ -18,20 +18,23 @@ public class FloatingMenuPage extends BasePage {
     Locator footer = page.locator("#page-footer");
     Locator menu = page.locator("#menu");
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(FLOATING_MENU_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public String getTitleText() {
         logger.info("Getting title text");
         return title.innerText();
     }
 
+    // # Footer Methods
     public Locator getFooter() {
         return footer;
     }
 
+    // # Menu Methods
     public Locator getMenu() {
         return menu;
     }

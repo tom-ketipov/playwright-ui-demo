@@ -17,11 +17,12 @@ public class ExitIntentPage extends BasePage {
     Locator title = page.locator("h3");
     Locator modalTitle = page.locator(".modal-title h3");
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(EXIT_INTENT_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public String getTitleText() {
         logger.info("Getting title text");
         return title.innerText();
