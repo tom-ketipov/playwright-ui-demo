@@ -108,7 +108,6 @@ public class App {
         logger.info("Starting browser: {}", browserTypeName);
         playwright = Playwright.create();
 
-
         // Set browser options
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions();
         launchOptions.setHeadless(isHeadless());
@@ -132,6 +131,10 @@ public class App {
         context = browser.newContext();
         page = context.newPage();
         logger.info("Browser started successfully");
+    }
+
+    public Page getPage() {
+        return page;
     }
 
     /**

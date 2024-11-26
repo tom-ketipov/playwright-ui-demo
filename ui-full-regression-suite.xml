@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="The Internet UI Tests" parallel="classes" thread-count="5">
+    <listeners>
+        <listener class-name="ui.utils.ScreenshotListener"/>
+    </listeners>
+
     <test name="UI Functionality Tests">
         <classes>
             <class name="ui.pages.AvailableExamplesPageTest"/>
