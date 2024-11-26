@@ -19,11 +19,12 @@ public class JavascriptErrorPage extends BasePage {
     // # page locators
     Locator title = page.locator("h3");
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(JAVASCRIPT_ERROR_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public Locator getTitle() {
         return title;
     }
@@ -33,6 +34,7 @@ public class JavascriptErrorPage extends BasePage {
         return title.innerText();
     }
 
+    // # Console Error Methods
     public List<String> captureConsoleErrorsAfterNavigation() {
         List<String> errorMessages = new ArrayList<>();
 

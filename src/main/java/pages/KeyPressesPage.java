@@ -17,11 +17,12 @@ public class KeyPressesPage extends BasePage {
     Locator title = page.locator("h3");
     Locator result = page.locator("#result");
 
-    // # helpers
+    // # Navigation
     public void navigate() {
         navigate(KEY_PRESSES_PAGE_ENDPOINT);
     }
 
+    // # Title-related Methods
     public Locator getTitle() {
         return title;
     }

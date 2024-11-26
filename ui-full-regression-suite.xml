@@ -16,6 +16,7 @@
             <class name="ui.pages.JavascriptAlertsPageTest"/>
             <class name="ui.pages.ContextPageTest"/>
             <class name="ui.pages.JavascriptErrorPageTest"/>
+            <class name="ui.pages.NestedFramesPageTest"/>
         </classes>
     </test>
 </suite>

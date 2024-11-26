@@ -29,6 +29,7 @@ public class App {
     private ContextMenuPage contextMenuPage;
     private JavascriptAlertsPage javascriptAlertsPage;
     private JavascriptErrorPage javascriptErrorPage;
+    private NestedFramesPage nestedFramesPage;
 
     public AvailableExamplesPage availableExamplesPage() {
         return availableExamplesPage == null ? new AvailableExamplesPage(page) : availableExamplesPage;
@@ -84,6 +85,10 @@ public class App {
 
     public JavascriptErrorPage javascriptErrorPage() {
         return javascriptErrorPage == null ? new JavascriptErrorPage(page) : javascriptErrorPage;
+    }
+
+    public NestedFramesPage nestedFramesPage() {
+        return nestedFramesPage == null ? new NestedFramesPage(page) : nestedFramesPage;
     }
 
 
