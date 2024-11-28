@@ -2,6 +2,7 @@ package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,22 +20,26 @@ public class FloatingMenuPage extends BasePage {
     Locator menu = page.locator("#menu");
 
     // # Navigation
+    @Step("Navigate to the " + FLOATING_MENU_PAGE_ENDPOINT + " page")
     public void navigate() {
         navigate(FLOATING_MENU_PAGE_ENDPOINT);
     }
 
     // # Title-related Methods
+    @Step("Get page title text")
     public String getTitleText() {
         logger.info("Getting title text");
         return title.innerText();
     }
 
     // # Footer Methods
+    @Step("Get page footer")
     public Locator getFooter() {
         return footer;
     }
 
     // # Menu Methods
+    @Step("Get page menu")
     public Locator getMenu() {
         return menu;
     }
