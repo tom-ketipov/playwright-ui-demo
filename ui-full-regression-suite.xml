@@ -2,6 +2,7 @@
 <suite name="The Internet UI Tests" parallel="classes" thread-count="5">
     <listeners>
         <listener class-name="ui.utils.ScreenshotListener"/>
+        <listener class-name="ui.utils.AllureListener"/>
     </listeners>
 
     <test name="UI Functionality Tests">
