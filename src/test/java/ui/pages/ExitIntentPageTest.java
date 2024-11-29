@@ -10,12 +10,12 @@ public class ExitIntentPageTest extends BaseTest {
     @BeforeMethod
     public void setup() {
         super.setup();
-        app.exitIntentPage().navigate();
+        app().exitIntentPage().navigate();
     }
 
     @Test(description = "Verifies that the '/exit_intent' page modal title text is correct.")
     public void correct_title_for_the_exit_intent_modal() {
-        app.exitIntentPage().triggerExitIntent();
-        Assert.assertEquals(app.exitIntentPage().getModalTitleText(), "THIS IS A MODAL WINDOW");
+        app().exitIntentPage().triggerExitIntent();
+        Assert.assertEquals(app().exitIntentPage().getModalTitleText(), "THIS IS A MODAL WINDOW");
     }
 }

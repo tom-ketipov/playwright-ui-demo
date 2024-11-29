@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="The Internet UI Tests" parallel="classes" thread-count="5">
+<suite name="The Internet UI Tests" parallel="methods" thread-count="10">
     <listeners>
         <listener class-name="ui.utils.ScreenshotListener"/>
         <listener class-name="ui.utils.AllureListener"/>

@@ -10,14 +10,14 @@ public class HoversPageTest extends BaseTest {
     @BeforeMethod
     public void setup() {
         super.setup();
-        app.hoversPage().navigate();
+        app().hoversPage().navigate();
     }
 
     @Test(description = "Verifies that clicking the 'View Profile' link for the user redirects to the correct profile page.")
     public void the_view_profile_link_redirects_to_the_correct_page() {
-        app.hoversPage().clickFigureProfileLinkByHeaderText("user2");
+        app().hoversPage().clickFigureProfileLinkByHeaderText("user2");
 
-        String currentUrl = app.hoversPage().url();
+        String currentUrl = app().hoversPage().url();
 
         Assert.assertTrue(currentUrl.contains("users/2"),
                 String.format("Expected URL to contain '%s', but got '%s'", "users/2", currentUrl));

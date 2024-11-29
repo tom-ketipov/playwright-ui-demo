@@ -8,7 +8,7 @@ public class JavascriptErrorPageTest extends BaseTest {
 
     @Test
     public void on_load_console_error_is_logged_upon_page_navigation() {
-        Assert.assertTrue(app.javascriptErrorPage().captureConsoleErrorsAfterNavigation().get(0).contains("typeerror: cannot read properties of undefined (reading 'xyz')"));
+        Assert.assertTrue(app().javascriptErrorPage().captureConsoleErrorsAfterNavigation().get(0).contains("typeerror: cannot read properties of undefined (reading 'xyz')"));
     }
 
     /*
